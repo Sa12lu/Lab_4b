@@ -1,20 +1,40 @@
-<script>
-    $(document).ready(function () {
-        $.getJSON("books.json", function (data) {
-            const books = data.Students; // Access the "Students" array
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery DOM Operations</title>
+    <!-- Link to jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        /* Styling for the added class */
+        .myStyle {
+            background-color: coral;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Elements for DOM manipulation -->
+    <div id="myElement">Original Text</div>
+    <div id="myDIV">
+        <p>I am a myDIV.</p>
+    </div>
+    <button id="myButton">Click me</button>
+    
+    <script>
+        $(document).ready(function () {
+            // a. Change the text content of the #myElement div
+            $("#myElement").text("Modified Text");
 
-            // (a) Display the title of the first book
-            console.log("Title of the first book:", books[0].title);
+            // b. Add the 'myStyle' class to the #myDIV div
+            $("#myDIV").addClass("myStyle");
 
-            // (b) Display the author of the second book
-            console.log("Author of the second book:", books[1].author);
-
-            // (c) Display the genres of all books
-            const allGenres = books.map(book => book.genres.join(", "));
-            console.log("Genres of all books:", allGenres.join("; "));
-        }).fail(function () {
-            console.error("Failed to load JSON file.");
+            // c. Add a click event listener to the button
+            $("#myButton").on("click", function () {
+                alert("Button clicked!");
+            });
         });
-    });
-</script>
-
+    </script>
+</body>
+</html>
