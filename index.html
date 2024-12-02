@@ -1,5 +1,4 @@
 <script>
-    // Fetch and process the JSON data
     $(document).ready(function () {
         $.getJSON("books.json", function (data) {
             const books = data.Students; // Access the "Students" array
@@ -13,6 +12,9 @@
             // (c) Display the genres of all books
             const allGenres = books.map(book => book.genres.join(", "));
             console.log("Genres of all books:", allGenres.join("; "));
+        }).fail(function () {
+            console.error("Failed to load JSON file.");
         });
     });
 </script>
+
